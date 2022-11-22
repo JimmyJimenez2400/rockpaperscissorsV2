@@ -3,10 +3,10 @@ const roundWinner = document.querySelector('.roundWinner');
 const round = document.querySelector('.round');
 const displayPlayerScore = document.querySelector('.displayPlayerScore');
 const displayComputerScore = document.querySelector('.displayComputerScore');
+const displayRoundNum = document.querySelector('.displayRoundNum');
 
 
-
-let count = 0;
+let roundNum = 0;
 let playerScore = 0;
 let computerScore = 0;
 
@@ -24,15 +24,6 @@ const buttons = document.querySelectorAll('button');
 
 
 
-function clickedTracker() {
-    count++;
-    const allBtns = document.querySelectorAll('button');
-    if (count > 5) {
-        Array.from(allBtns).forEach(button => {
-            button.disabled = true;
-        });
-    }
-}
 
 
 
@@ -43,7 +34,7 @@ buttons.forEach(button => {
         console.log(playerSelection);
         playRound(playerSelection);
     });
-    button.addEventListener('click', clickedTracker);
+    button.addEventListener('click', isGameOver);
 })
 
 
@@ -70,8 +61,19 @@ function playRound(playerSelection) {
         computerScore++;
         roundWinner.textContent = `Computer wins the round! ${computerSelection} beats ${playerSelection}`;
     }
+    displayPlayerScore.textContent = `${playerScore}`;
+    displayComputerScore.textContent = `${computerScore}`;
+    displayRoundNum.textContent = `${roundNum++}`;
 }
 
+function isGameOver(){
+    const allBtns = document.querySelectorAll('button');
+    if (playerScore === 5 || computerScore === 5) {
+        Array.from(allBtns).forEach(button => {
+            button.disabled = true;
+        });
+    }
+}
 
 
 function gameWinner() {
@@ -91,16 +93,9 @@ function gameWinner() {
 
 
 function game() {
-    displayPlayerScore.textContent = `${playerScore}`;
-    displayComputerScore.textContent = `${computerScore}`;
 
-    for (let i = 0; i < 5; i++) {
-        playRound();
-        gameWinner();
-    }
-
-
-
+    playRound();
+    gameWinner();
 
 }
 
