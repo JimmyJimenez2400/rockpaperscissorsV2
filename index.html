@@ -5,21 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="./styles.css">
     <script src="./app.js" defer></script>
 </head>
 <body>
     <div id="container">
         <div class="results">
-            <h1 class="resultsTitle">Results Title: <span class="spanWinner"></span></h1>
+            <h1 class="resultsTitle">Results:</span></h1>
             <h2 class="round">Round: <span class="displayRoundNum"></span></h2>
             <h2 class="roundWinner"></h2>
             <h2 class="playerScore">Player Score: <span class="displayPlayerScore"></span></h2>
             <h2 class="computerScore">Computer Score: <span class="displayComputerScore"></span></h2>
-            <div class="buttons">
-                <button value="rock">rock</button>
-                <button value="paper">paper</button>
-                <button value="scissors">scissors</button>
+        </div>
+        <div class="outputScreen">
+            <div class="playerOutput">
+                <h3>Player Choice:</h3>
+                <div class="sign></div>
             </div>
+            <div class="computerOutput">
+                <h3>Computer Choice:</h3>
+                <img src="" alt="">
+            </div>
+        </div>
+        <div class="gameButtons">
+            <button class="gameBtn" value="rock">rock</button>
+            <button class="gameBtn" value="paper">paper</button>
+            <button class="gameBtn"value="scissors">scissors</button>
+        </div>
+        <div class="modal hide center" id="openModal">
+            <h2 class="winner">SAMPLE</h2>
+            <button class="btn" id="playAgain" onclick="resetGame()">Play again?</button>
         </div>
     </div>
 </body>
